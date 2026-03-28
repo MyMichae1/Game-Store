@@ -1,0 +1,157 @@
+<html>
+
+<head>
+    <title>Login Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #1b182b;
+            background-image: url(https://i.pinimg.com/originals/90/70/32/9070324cdfc07c68d60eed0c39e77573.gif)
+        }
+
+        .container {
+            display: flex;
+            width: 800px;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .left {
+            background: url('https://media.giphy.com/media/TqDGMpZ0DN0m4/giphy.gif') no-repeat center center/cover;
+            width: 50%;
+            padding: 40px;
+            color: white;
+
+
+
+        }
+
+        .left h1 {
+            font-size: 40px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .left h4 {
+            font-size: 18px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+
+
+        .left p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .right {
+            background: white;
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .h1 {
+            margin-top: 200px;
+        }
+
+        .right h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .right input[type="text"],
+        .right input[type="email"],
+        .right input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .right input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .right label {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .right button {
+            width: 100%;
+            padding: 10px;
+            background: #1b182b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .right button i {
+            margin-left: 10px;
+        }
+
+        .right .or {
+            text-align: center;
+            margin: 20px 0;
+            color: #ccc;
+        }
+
+        .right .social-buttons button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .right .social-buttons button i {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>Login Now</h1>
+            <h4>Share your artwork and Get projects!</h4>
+        </div>
+        <div class="right">
+            <h2>Login</h2>
+            <input type="text" placeholder=" username">
+            <input type="password" placeholder="Password">
+            <label>
+                <input type="checkbox"> Accept Terms & Conditions
+            </label>
+            <button onclick="redirectToIndex()">Login</button>
+        </div>
+    </div>
+    <script>
+        function redirectToIndex() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>

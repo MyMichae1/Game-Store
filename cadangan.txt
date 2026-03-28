@@ -1,0 +1,120 @@
+<div class="box">
+            <img src="img/img13.jpg" alt="">
+            <div class="box-text">
+                <h2>DOTA 2</h2>
+                <h3>Action</h3>
+                <div class="rating-download">
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <span>4.7 | Rp.20.000,-</span>
+                    </div>
+                    <a href="https://www.dota2.com/home" class="box-btn"><i class='bx bx-down-arrow-alt'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/img14.jpg" alt="">
+            <div class="box-text">
+                <h2>APEX LEGENDS</h2>
+                <h3>Action</h3>
+                <div class="rating-download">
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <span>4.7 | Rp.20.000,-</span>
+                    </div>
+                    <a href="https://www.ea.com/games/apex-legends" class="box-btn"><i class='bx bx-down-arrow-alt'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/img15.jpeg" alt="">
+            <div class="box-text">
+                <h2>LLEGO WORLDS MONSTERS</h2>
+                <h3>Action</h3>
+                <div class="rating-download">
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <span>4.7 | Rp.89.000,-</span>
+                    </div>
+                    <a href="#" class="box-btn"><i class='bx bx-down-arrow-alt'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/img16.jpg" alt="">
+            <div class="box-text">
+                <h2>Tekken 7</h2>
+                <h3>Action</h3>
+                <div class="rating-download">
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <span>4.7 | Rp.980.000,-</span>
+                    </div>
+                    <a href="#" class="box-btn"><i class='bx bx-down-arrow-alt'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/img17.jpg" alt="">
+            <div class="box-text">
+                <h2>super smash bros. ultimate</h2>
+                <h3>Action</h3>
+                <div class="rating-download">
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <span>4.7 | Rp.850.000,-</span>
+                    </div>
+                    <a href="#" class="box-btn"><i class='bx bx-down-arrow-alt'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/img18.png" alt="">
+            <div class="box-text">
+                <h2>street fighter II</h2>
+                <h3>Action</h3>
+                <div class="rating-download">
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <span>4.7 | Rp.500.000,-</span>
+                    </div>
+                    <a href="#" class="box-btn"><i class='bx bx-down-arrow-alt'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/img19.jpeg" alt="">
+            <div class="box-text">
+                <h2>SEKIRO SHADOWS DIE TWICE</h2>
+                <h3>Action</h3>
+                <div class="rating-download">
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <span>4.7 | Rp.400.000,-</span>
+                    </div>
+                    <a href="#" class="box-btn"><i class='bx bx-down-arrow-alt'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/img20.jpeg" alt="">
+            <div class="box-text">
+                <h2>The Glder Scrolls</h2>
+                <h3>Action</h3>
+                <div class="rating-download">
+
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <span>4.7  | Rp.900.000,-</span>
+                    </div>
+                    <a href="#" class="box-btn"><i class='bx bx-down-arrow-alt'></i></a>
+                </div>
+            </div>
+        </div>

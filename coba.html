@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Component</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+
+        .search-container {
+            width: 201%;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .search-wrapper {
+            display: flex;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .search-input:focus {
+            outline: none;
+        }
+
+        .search-icon {
+            background: none;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .search-icon:hover {
+            color: #007bff;
+        }
+
+        .search-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 1px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+        .results-container {
+            margin-top: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .results-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .results-list li {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .results-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <div class="search-wrapper">
+            <button class="search-icon">
+                <i class='bx bxs-search'></i>
+            </button>
+            <input type="text" class="search-input" placeholder="Cari sesuatu..." id="searchInput">
+            <button class="search-button" id="searchButton">Cari</button>
+        </div>
+        <div class="results-container" id="resultsContainer" style="display: none;">
+            <h3>Hasil Pencarian</h3>
+            <ul class="results-list" id="resultsList"></ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const searchIcon = document.querySelector('.search-icon');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsList = document.getElementById('resultsList');
+
+            function performSearch() {
+                const searchTerm = searchInput.value.trim();
+                
+                if (searchTerm === '') {
+                    alert('Masukkan kata kunci pencarian');
+                    return;
+                }
+
+                const mockResults = [
+                    `Hasil untuk "${searchTerm}" - Item 1`,
+                    `Hasil untuk "${searchTerm}" - Item 2`,
+                    `Hasil untuk "${searchTerm}" - Item 3`
+                ];
+
+                resultsList.innerHTML = '';
+
+                mockResults.forEach(result => {
+                    const li = document.createElement('li');
+                    li.textContent = result;
+                    resultsList.appendChild(li);
+                });
+
+                resultsContainer.style.display = 'block';
+            }
+
+            searchButton.addEventListener('click', performSearch);
+
+            searchIcon.addEventListener('click', performSearch);
+
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

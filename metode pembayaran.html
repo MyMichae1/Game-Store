@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran | Game Store</title>
+    <link rel="stylesheet" href="s/a.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <div class="progress">
+        <div class="progress-bar" id="scroll-bar"></div>
+    </div>
+
+    <header>
+        <div class="nav container">
+            <a href="index.html" class="logo">Game<span>Store</span></a>
+            <div class="nav-icons">
+                <i class='bx bx-bell bx-tada' id="bell-icon"></i>
+                <i class='bx bxs-search'></i>
+                <div class="menu-icon">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </div>
+
+            <div class="menu">
+                <img src="img/menu.png" alt="">
+                <div class="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="trending.html">Trending</a></li>
+                    <li><a href="admin.html">Dashboard</a></li>
+                    <li><a href="new game.html">New Game</a></l>
+                    <li><a href="register.html">Sign Up</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="daftargame.html">Daftar Game</a></li>
+                    <li><a href="metode pembayaran.html">Metode Pembayaran</a></li>
+                    <li><a href="struk pembayaran.html">Struk Pembayaran</a></li>
+                    <li><a href="riwayat transaksi.html">Riwayat Transaksi</a></li>
+                </div>
+            </div>
+
+
+            <div class="notification">
+                <div class="notification-box">
+                    <i class='bx bxs-check-circle'></i>
+                    <p>Congratulation, Your game download successfully</p>
+                </div>
+                <div class="notification-box box-color">
+                    <i class='bx bxs-x-circle'></i>
+                    <p>Could not apply changes.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="new container" id="new">
+        <div class="heading">
+            <div class="heading">
+                <i class='bx bxs-wallet'></i>
+                <h2>Metode Pembayaran</h2>
+            </div>
+        </div>
+        <div class="hero-section">
+            <div class="content">
+             <p>
+              Discover Games You Will Love
+             </p>
+             <h1>
+              Read About New Games That You Enjoy
+             </h1>
+             <button>
+              Start Exploring
+             </button>
+            </div>
+           </div>
+
+    <section id="metode-pembayaran">
+        <div class="container">
+        <form action="">
+            <div class="row">
+                <div class="column">
+                    <h3 class="title">
+                    <div class="input-box">
+                        <span>Full Name :</span>
+                        <input type="text" placeholder="Michael Sam">
+                    </div>
+                    <div class="input-box">
+                        <span>Email :</span>
+                        <input type="email" placeholder="example@example.com">
+                    </div>
+                    <div class="input-box">
+                        <span>Address :</span>
+                        <input type="text" placeholder="Jl. Dr. O. Notohamidjojo No.1 - 10, Blotongan, Kec. Sidorejo, Kota Salatiga,">
+                    </div>
+                    <div class="input-box">
+                        <span>City :</span>
+                        <input type="text" placeholder="Salatiga">
+                    </div>
+
+                    <div class="flex">
+                        <div class="input-box">
+                            <span>State :</span>
+                            <input type="text" placeholder="Indonesia">
+                        </div>
+                        <div class="input-box">
+                            <span>Zip Code :</span>
+                            <input type="number" placeholder="0857-7821-7532">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <h3 class="title">Payment</h3>
+                    <div class="input-box">
+                        <span>Cards Accepted :</span>
+                        <img src="img/imgcards.png" alt="">
+                    </div>
+                    <div class="input-box">
+                        <span>Name On Card :</span>
+                        <input type="text" placeholder="Mr. Michael Sam">
+                    </div>
+                    <div class="input-box">
+                        <span>Credit Card Number :</span>
+                        <input type="number" placeholder="1111 2222 3333 4444">
+                    </div>
+                    <div class="input-box">
+                        <span>Exp. Month :</span>
+                        <input type="text" placeholder="Desember">
+                    </div>
+                
+                    <div class="flex">
+                        <div class="input-box">
+                            <span>Exp. Year :</span>
+                            <input type="number" placeholder="2025">
+                        </div>
+                        <div class="input-box">
+                            <span>CVV :</span>
+                            <input type="number" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn" onclick="redirectToIndex()">Submit</button>
+        </form>
+    </div>
+</section> 
+<script src="m/main5.js"></script>     
+</body>

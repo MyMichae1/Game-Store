@@ -1,0 +1,148 @@
+<?php
+session_start();
+include 'koneksi.php'; // Pastikan Anda menghubungkan ke database
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nomor_transaksi = $_POST['nomor_transaksi'];
+    $pembelian = $_POST['pembelian']; // Ini sudah dalam format JSON
+    $total_pembelian = floatval($_POST['total_pembelian']); // Ubah menjadi float
+
+    // Debug: Tampilkan data yang diterima
+    // var_dump($_POST); // Uncomment untuk debugging
+
+    if (empty($nomor_transaksi) || empty($pembelian) || $total_pembelian <= 0) {
+        echo "<script>
+                alert('Data pembelian tidak valid. Pastikan semua data terisi dengan benar.');
+                window.location.href = 'index.php';
+              </script>";
+        exit();
+    }
+
+    // Cek apakah email ada di sesi
+    if (!isset($_SESSION['user_email']) && !isset($_SESSION['admin_email'])) {
+        echo "<script>
+                alert('Anda harus login terlebih dahulu.');
+                window.location.href = 'login.php';
+              </script>";
+        exit();
+    }
+
+    // Ambil email dari sesi
+    $email = $_SESSION['user_email'] ?? $_SESSION['admin_email']; 
+
+    try {
+        // Simpan data ke tabel riwayat_transaksi
+        $sql = "INSERT INTO riwayat_transaksi (nomor_transaksi, pembelian, total_pembelian) VALUES (:nomor_transaksi, :pembelian, :total_pembelian)";
+        $stmt = $conn->prepare($sql);
+        
+        // Mengikat parameter
+        $stmt->bindParam(':nomor_transaksi', $nomor_transaksi);
+        $stmt->bindParam(':pembelian', $pembelian);
+        $stmt->bindParam(':total_pembelian', $total_pembelian);
+
+        if ($stmt->execute()) {
+            // Decode JSON untuk mendapatkan data
+            $pembelian_data = json_decode($pembelian, true);
+            
+            // Debug: Tampilkan data pembelian yang terdekode
+            // var_dump($pembelian_data); // Uncomment untuk debugging
+
+            // Cek apakah data game atau membership ada
+            $is_game = !empty($pembelian_data['nama_game']);
+            $is_membership = !empty($pembelian_data['nama_membership']);
+
+            // Koneksi ke database untuk_admin
+            $servername_admin = "localhost"; // Ganti dengan nama server Anda jika berbeda
+            $username_admin = "root"; // Ganti dengan username database Anda
+            $password_admin = ""; // Ganti dengan password database Anda
+            $dbname_admin = "untuk_admin"; // Nama database yang benar
+
+            // Membuat koneksi ke database untuk_admin
+            $conn_admin = new PDO("mysql:host=$servername_admin;dbname=$dbname_admin", $username_admin, $password_admin);
+            $conn_admin->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            // Simpan transaksi game jika ada
+            if ($is_game) {
+                // Pastikan harga ada dan tidak null
+                if (!isset($pembelian_data['harga_game']) || is_null($pembelian_data['harga_game'])) {
+                    echo "<script>
+                            alert('Harga tidak ditemukan. Pastikan data pembelian lengkap.');
+                            window.location.href = 'index.php';
+                          </script>";
+                    exit();
+                }
+
+                // Simpan transaksi game ke dalam tabel transaksi_user
+                $sql_game = "INSERT INTO transaksi_user (nomor_transaksi, nama_game, harga) VALUES (:nomor_transaksi, :nama_game, :harga)";
+                $stmt_game = $conn_admin->prepare($sql_game);
+                
+                // Mengikat parameter
+                $stmt_game->bindParam(':nomor_transaksi', $nomor_transaksi);
+                $stmt_game->bindParam(':nama_game', $pembelian_data['nama_game']);
+                $stmt_game->bindParam(':harga', $pembelian_data['harga_game']); // Pastikan ini sesuai dengan nama kolom yang benar
+
+                // Eksekusi query untuk menyimpan transaksi game
+                if ($stmt_game->execute()) {
+                    // Arahkan ke struk pembayaran untuk game
+                    header("Location: strukpembayaran.php?nomor_transaksi=$nomor_transaksi");
+                    exit();
+                } else {
+                    echo "<script>
+                            alert('Gagal menyimpan data transaksi game.');
+                            window.location.href = 'index.php';
+                          </script>";
+                }
+            }
+
+            // Proses untuk membership jika ada
+            if ($is_membership) {
+                // Pastikan harga membership ada
+                if (!isset($pembelian_data['harga_membership']) || is_null($pembelian_data['harga_membership'])) {
+                    echo "<script>
+                            alert('Harga membership tidak ditemukan. Pastikan data pembelian lengkap.');
+                            window.location.href = 'index.php';
+                          </script>";
+                    exit();
+                }
+
+                // Update membership di tabel informasi_user
+                $sql_update_user = "UPDATE informasi_user SET membership = 1 WHERE email = :email";
+                $stmt_update_user = $conn->prepare($sql_update_user);
+                $stmt_update_user->bindParam(':email', $email);
+
+                if ($stmt_update_user->execute()) {
+                    // Arahkan ke struk membership
+                    header("Location: strukmembership.php?nomor_transaksi=$nomor_transaksi");
+                    exit();
+                } else {
+                    echo "<script>
+                            alert('Gagal memperbarui data membership.');
+                            window.location.href = 'index.php';
+                          </script>";
+                }
+            }
+
+            // Tutup koneksi untuk_admin
+            $conn_admin = null;
+        } else {
+            echo "<script>
+                    alert('Gagal menyimpan data transaksi.');
+                    window.location.href = 'index.php';
+                  </script>";
+        }
+    } catch (PDOException $e) {
+        // Tangani kesalahan database
+        error_log("Error: " . $e->getMessage());
+        echo "<script>
+                alert('Terjadi kesalahan saat menyimpan data: " . addslashes($e->getMessage()) . "');
+                window.location.href = 'index.php';
+              </script>";
+    }
+} else {
+    // Jika bukan POST request
+    echo "<script>
+            alert('Permintaan tidak valid.');
+            window.location.href = 'index.php';
+          </script>";
+}
+?>
